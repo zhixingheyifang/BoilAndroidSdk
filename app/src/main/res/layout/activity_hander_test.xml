@@ -5,35 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".activity.HanderTestActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btn_1"
+        <TextView
+            android:id="@+id/tv_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="dailogActivity"
-            android:text="dailogActivity"
+            android:text="TextView" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="add"
+            android:text="base"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/btn_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="handerActivity"
-            android:text="handler"
+            android:onClick="postDelayed"
+            android:text="postDelayed"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/btn_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="asyncTaskActivity"
-            android:text="AsyncTaskActivity"
+            android:onClick="canselPost"
+            android:text="canselPost"
             android:textAllCaps="false" />
 
     </LinearLayout>
@@ -44,12 +47,29 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="testGetMetaDate"
-            android:text="testGetMetaDate"
+            android:onClick="handerThread"
+            android:text="handerThread"
             android:textAllCaps="false" />
-    </LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="affect"
+            android:text="affect"
+            android:textAllCaps="false" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="affectVar"
+            android:text="affectVar"
+            android:textAllCaps="false" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="looperTest"
+            android:text="looperTest"
+            android:textAllCaps="false" />
 
+    </LinearLayout>
 </LinearLayout>

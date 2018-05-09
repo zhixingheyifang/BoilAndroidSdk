@@ -16,6 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".DailogActivity"
+            android:theme="@style/popDialog" />
+        <activity android:name=".activity.HanderTestActivity" />
+        <activity android:name=".activity.AsyncTaskActivity"></activity>
+        <meta-data
+            android:name="DIANJU_KEY"
+            android:value="${DIANJU_KEY}"/>
     </application>
-
 </manifest>

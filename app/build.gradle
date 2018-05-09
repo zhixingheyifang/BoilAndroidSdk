@@ -4,11 +4,15 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.example.nuonuo.boilandroidsdk"
-        minSdkVersion 23
+        minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [
+                DIANJU_KEY   : "tjsfj001"//点聚授权码100台设备
+
+        ]
     }
     buildTypes {
         release {
