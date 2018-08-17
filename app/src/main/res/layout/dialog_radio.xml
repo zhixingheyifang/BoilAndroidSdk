@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp">
+
+    <com.example.nuonuo.boilandroidsdk.view.radiogroup.RadioGroupAuto
+        android:id="@+id/radioGroup_sex_id"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb1"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="现行犯罪" />
+
+        <RadioButton
+            android:id="@+id/rb2"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="通缉对象" />
+
+        <RadioButton
+            android:id="@+id/rb3"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="犯罪嫌疑" />
+
+        <RadioButton
+            android:id="@+id/rb4"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="违法嫌疑" />
+
+        <RadioButton
+            android:id="@+id/rb5"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="形迹可疑" />
+
+        <RadioButton
+            android:id="@+id/rb6"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="物品可疑" />
+
+        <RadioButton
+            android:id="@+id/rb7"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="车辆可疑" />
+
+        <RadioButton
+            android:id="@+id/rb8"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="查验身份" />
+
+        <RadioButton
+            android:id="@+id/rb9"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="出城登记" />
+
+
+    </com.example.nuonuo.boilandroidsdk.view.radiogroup.RadioGroupAuto>
+
+</RelativeLayout>

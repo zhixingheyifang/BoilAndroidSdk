@@ -1,29 +1,46 @@
 package com.example.nuonuo.boilandroidsdk.utils;
 
-import android.util.Log;
+import android.annotation.SuppressLint;
+import android.app.Application;
+import android.content.Context;
+import android.support.annotation.NonNull;
 
-/**
- * Android 禁止Edittext弹出系统软键盘
- * https://blog.csdn.net/sinat_27672523/article/details/56839837
- */
-public class Utils {
-    public static final  String TAG="Utils";
+public final class Utils {
 
-    public void getThreadInfo(){
-        //获取线程信息
-        Log.d(TAG, " Thread name: " + Thread.currentThread().getName());
-        Log.d(TAG, "Thread.currentThread().getId():" + Thread.currentThread().getId());
+    @SuppressLint("StaticFieldLeak")
+    private static Application sApplication;
+
+    private Utils() {
+        throw new UnsupportedOperationException("u can't instantiate me...");
     }
 
-    public void getClassInfo(){
-        //获取类名
-        Log.d(TAG, this.getClass().getName());//适用于非静态方法,静态方法不行
-        Log.d(TAG, Thread.currentThread().getStackTrace()[1].getClassName());//适用于静态方法
-        //获取方法名
-        Log.d(TAG, Thread.currentThread().getStackTrace()[1].getMethodName());
-        //获取代码行号
-        Log.d(TAG, "Thread.currentThread().getStackTrace()[1].getLineNumber():" + Thread.currentThread().getStackTrace()[1].getLineNumber());
+    /**
+     * Init utils.
+     * <p>Init it in the class of Application.</p>
+     *
+     * @param context context
+     */
+    public static void init(@NonNull final Context context) {
+        init((Application) context.getApplicationContext());
     }
 
+    /**
+     * Init utils.
+     * <p>Init it in the class of Application.</p>
+     *
+     * @param app application
+     */
+    public static void init(@NonNull final Application app) {
+        Utils.sApplication = app;
+    }
 
+    /**
+     * Return the context of Application object.
+     *
+     * @return the context of Application object
+     */
+    public static Application getApp() {
+        if (sApplication != null) return sApplication;
+        throw new NullPointerException("u should init first");
+    }
 }

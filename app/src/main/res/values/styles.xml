@@ -11,4 +11,13 @@
     <style name="popDialog" parent="@style/Theme.AppCompat.Dialog">
         <item name="android:backgroundDimEnabled">false</item><!-- 弹出对话框时背景不变暗 -->
     </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

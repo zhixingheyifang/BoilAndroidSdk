@@ -1,9 +1,11 @@
-package com.example.nuonuo.boilandroidsdk;
+package com.example.nuonuo.boilandroidsdk.activity;
 
 import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.WindowManager;
+
+import com.example.nuonuo.boilandroidsdk.R;
 
 public class DailogActivity extends Activity {
 
@@ -14,6 +16,5 @@ public class DailogActivity extends Activity {
         //打开但是不获取焦点，即不弹出输入法（不建议用，返回键失灵卡死）
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
         setContentView(R.layout.activity_dailog);
-
     }
 }

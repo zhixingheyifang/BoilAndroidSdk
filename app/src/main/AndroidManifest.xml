@@ -16,13 +16,40 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name=".DailogActivity"
+            android:name=".activity.DailogActivity"
+            android:label="对框框Activity"
             android:theme="@style/popDialog" />
-        <activity android:name=".activity.HanderTestActivity" />
-        <activity android:name=".activity.AsyncTaskActivity"></activity>
+
+        <activity
+            android:name=".activity.HanderTestActivity"
+            android:label="Handler完全使用" />
+
+        <activity
+            android:name=".activity.AsyncTaskActivity"
+            android:label="AsyncTask完全使用" />
+
+
+        <activity
+            android:name=".activity.CustomViewPagerActivity"
+            android:label="自定义viewpager" />
+
+        <activity
+            android:name=".activity.CustomeDialogActivity"
+            android:label="自定义dialog"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <!--广播-->
+        <receiver
+            android:name=".activity.NetWorkStateReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:label="网络连接与断开广播">
+            <action android:name="MY_BROADCAST" />
+        </receiver>
         <meta-data
             android:name="DIANJU_KEY"
-            android:value="${DIANJU_KEY}"/>
+            android:value="${DIANJU_KEY}" />
     </application>
+
 </manifest>

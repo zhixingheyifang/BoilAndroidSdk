@@ -45,13 +45,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="handerThread"
-            android:text="handerThread"
-            android:textAllCaps="false" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -64,12 +57,19 @@
             android:onClick="affectVar"
             android:text="affectVar"
             android:textAllCaps="false" />
+        <!--<Button-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:onClick="looperTest"-->
+            <!--android:text="looperTest"-->
+            <!--android:textAllCaps="false" />-->
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="looperTest"
-            android:text="looperTest"
-            android:textAllCaps="false" />
+            android:text="handerThread2"
+            android:textAllCaps="false"
+            android:onClick="postMessage"
+            />
 
     </LinearLayout>
 </LinearLayout>

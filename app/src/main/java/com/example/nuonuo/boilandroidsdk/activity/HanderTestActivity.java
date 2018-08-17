@@ -6,22 +6,23 @@ import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.nuonuo.boilandroidsdk.MainActivity;
-import com.example.nuonuo.boilandroidsdk.R;
 
 import android.os.Handler;
 import android.os.Message;
-import android.os.SystemClock;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.nuonuo.boilandroidsdk.R;
 
 /**
  * 参考：
  * handler基本使用：http://www.jb51.net/article/43360.htm
  * handler线程间通信：https://blog.csdn.net/shaoenxiao/article/details/54561753?utm_source=itdadao&utm_medium=referral
  * Handler消息接收拦截：https://blog.csdn.net/dingjikerbo/article/details/50673550
+ * eventbus比较：https://www.cnblogs.com/whoislcj/p/5590615.html
  */
 public class HanderTestActivity extends AppCompatActivity {
     public TextView tv_num;
@@ -43,9 +44,7 @@ public class HanderTestActivity extends AppCompatActivity {
             String whether     = b.getString("whether");
             int    temperature = b.getInt("temperature");
             Log.i("HanderTestActivity", "whether= " + whether + " ,temperature= " + temperature);
-
-        }
-        ;
+        };
     };
 
     @Override
@@ -53,6 +52,7 @@ public class HanderTestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mContext = this;
         setContentView(R.layout.activity_hander_test);
+        initHandler();
         tv_num = findViewById(R.id.tv_number);
     }
 
@@ -101,7 +101,6 @@ public class HanderTestActivity extends AppCompatActivity {
             Log.d("HanderTestActivity", "hello");
             //延时1s后又将线程加入到线程队列中
             handler.postDelayed(update_thread, 1000);
-
         }
     };
     //======================================主线程与子线程通信======================================
@@ -129,58 +128,32 @@ public class HanderTestActivity extends AppCompatActivity {
     }
 
     //======================================HandlerThread的使用======================================
-    /**
-     *
-     */
-    public void handerThread(View view) {
-        new Thread(new Runnable() {
+
+    Handler handler2;
+    public void postMessage(View view) {
+        Log.i("LP", "Handler_ID1---->" + Thread.currentThread().getId());
+        Log.i("LP", "Handler_Name1---->" + Thread.currentThread().getName());
+        Message msg = handler2.obtainMessage();
+        Bundle  b   = new Bundle();
+        b.putInt("number", 1234);
+        msg.setData(b);
+        msg.sendToTarget();
+    }
+
+    public void initHandler() {
+        HandlerThread handlerThread = new HandlerThread("handlerThread");
+        handlerThread.start();
+        handler2 = new Handler(handlerThread.getLooper()) {
             @Override
-            public void run() {
-                HandlerThread handler_thread = new HandlerThread("handler_thread");
-                handler_thread.start();
-                //MyHandler类是自己继承的一个类，这里采用hand_thread的Looper来初始化它
-                MyHandler my_handler = new MyHandler(handler_thread.getLooper());
-                //获得一个消息msg
-                Message msg = my_handler.obtainMessage();
-
-                //采用Bundle保存数据，Bundle中存放的是键值对的map，只是它的键值类型和数据类型比较固定而已
-                Bundle b = new Bundle();
-                b.putString("whether", "晴天");
-                b.putInt("temperature", 34);
-                msg.setData(b);
-                //将msg发送到自己的handler中，这里指的是my_handler,调用该handler的HandleMessage方法来处理该mug
-                msg.sendToTarget();
+            public void handleMessage(Message msg) {
+                Log.i("LP", "Handler_ID2---->" + Thread.currentThread().getId());
+                Log.i("LP", "Handler_Name2---->" + Thread.currentThread().getName());
+                Bundle b      = msg.getData();
+                int    number = b.getInt("number");
+                Log.i("LP", "number= " + number);
             }
-        }).start();
-
-
+        };
     }
-
-    class MyHandler extends Handler {
-        //空的构造函数
-        public MyHandler() {
-        }
-        //以Looper类型参数传递的函数，Looper为消息泵，不断循环的从消息队列中得到消息并处理，因此
-        //每个消息队列都有一个Looper，因为Looper是已经封装好了的消息队列和消息循环的类
-        public MyHandler(Looper looper) {
-            //调用父类的构造函数
-            super(looper);
-        }
-        @Override
-        public void handleMessage(Message msg) {
-            // TODO Auto-generated method stub
-            System.out.println("Handler_ID---->" + Thread.currentThread().getId());
-            System.out.println("Handler_Name---->" + Thread.currentThread().getId());
-            //将消息中的bundle数据取出来
-            Bundle b           = msg.getData();
-            String whether     = b.getString("whether");
-            int    temperature = b.getInt("temperature");
-            Log.i("HanderTestActivity", "whether= " + whether + " ,temperature= " + temperature);
-        }
-
-    }
-
-
     //======================================子线程与子线程间通信======================================
 
 

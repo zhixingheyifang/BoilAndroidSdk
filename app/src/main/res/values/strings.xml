@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BoilAndroidSdk</string>
+    <string name="title_activity_coordinator">CoordinatorActivity</string>
 </resources>

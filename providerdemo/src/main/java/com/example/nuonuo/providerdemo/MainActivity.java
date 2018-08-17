@@ -3,6 +3,8 @@ package com.example.nuonuo.providerdemo;
 import android.util.Log;
 import android.view.MenuItem;
 
+import java.util.logging.Handler;
+
 public class MainActivity extends BaseActivity
 implements IReportBack
 {
@@ -36,5 +38,5 @@ implements IReportBack
     		return true;
     	}
     	return true;
-    }   
+    }
 }
